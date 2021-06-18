@@ -25,40 +25,49 @@ const Login = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         const { username, password } = user;
-        if (!username || !password){
+        if(!username){
             setError({
-                error: "Falta usuário ou senha"
+                error: "Usuário não informado!"
+            });
+        } else if (!password){
+            setError({
+                error: "Senha não informada!"
             });
         } else {
             try {
                 login("fsaff");
-                router.push("/app");
+                router.push("/home");
             } catch (err){
                 console.log(err);
                 setError({
-                    error: "Não foi possível realizar o cadastro, tente novamente mais tarde!"
+                    error: "Não foi possível efetuar o login, tente novamente mais tarde!"
                 });
             }
         }
     };
 
-    useEffect(() => {}, []);
+    //useEffect(() => {}, []);
 
     return (
         <Container>
             <Form onSubmit={handleLogin}>
-                { error && <p>{error}</p>}
-                <p>Usuário
-                <input type="text"
-                onChange={e => setUser({...user, username: e.target.value})}/>
+                <p>
+                    Usuário:
+                    <input type="text" onChange={
+                        e => setUser({...user, username: e.target.value})
+                    }/>
                 </p>
-                <p>Senha
-                <input type="password"
-                onChange={e => setUser({...user, password: e.target.value})}/>
+                <p>
+                    Senha:
+                    <input type="password" onChange={e => setUser({...user, password: e.target.value})}/>
+                </p>
+                <p>
+                    {error?.error}
                 </p>
                 <br/>
-                <button type="submit">Entrar</button>
+                    <button type="submit">Entrar</button>
                 <br/>
+
                 <Link href="/registrar">Criar conta</Link>
             </Form>
         </Container>
