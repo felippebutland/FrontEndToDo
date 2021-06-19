@@ -1,0 +1,99 @@
+.container {
+    background-image: url("./Imgs/background_img.jpg");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(237, 237, 237);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70.25ch;
+}
+
+.form {
+    width: 400px;
+    background-color: #49216a;
+    height: 60%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 20px -1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 100px;
+    margin: 10px 0 40px;
+}
+
+.p {
+    color: #cccccc;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.input {
+    flex: 1;
+    height: 100%;
+    margin-bottom: 22px;
+    padding: 0 20px;
+    color: #777;
+    font-size: 15px;
+    width: 80%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    
+}
+
+.buttonEntrar {
+    color: #fff;
+    font-size: 16px;
+    background: #4bb64b;
+    height: 56px;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    transition-duration: 0.4s;
+}
+
+.buttonEntrar:hover {
+    background: #6ec56e;
+}
+
+.buttonCriarConta {
+    color: #fff;
+    font-size: 16px;
+    height: 25px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    background: #4b60b6;
+    transition-duration: 0.4s;
+}
+
+.buttonCriarConta:hover {
+    background: #5970cc;
+}
+
+.hr {
+    margin: 20px 0;
+    border: none;
+    width: 100%;
+}
+
+.a {
+    font-size: 16;
+    font-weight: bold;
+    color: #999;
+    text-decoration: none;
+}
+
+.linkLogin {
+    font-size: 16;
+    color: #cdcdcd;
+}
