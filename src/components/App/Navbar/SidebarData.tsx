@@ -11,7 +11,7 @@ export const SideBarData = [
     },
     {
         title: 'Comentários',
-        path: '/home/comentario',
+        path: './Comentario/comentario',
         icon: <FaIcons.FaCommentAlt />,
         className: 'nav-text'
     },

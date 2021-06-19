@@ -1,5 +1,5 @@
 .container {
-    background-image: url("./Imgs/background_img.jpg");
+    background-image: url("../Login/Imgs/background_img.jpg");
     background-position: center;
     background-size: cover;
     background-color: rgb(237, 237, 237);
@@ -22,11 +22,6 @@
     align-items: center;
 }
 
-.img {
-    width: 100px;
-    margin: 10px 0 40px;
-}
-
 .p {
     color: #cccccc;
     margin-bottom: 5px;
@@ -42,13 +37,13 @@
     padding: 0 20px;
     color: #777;
     font-size: 15px;
-    width: 80%;
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 10px;
     
 }
 
-.buttonEntrar {
+.buttonRegistrar {
     color: #fff;
     font-size: 16px;
     background: #4bb64b;
@@ -61,11 +56,11 @@
     transition-duration: 0.4s;
 }
 
-.buttonEntrar:hover {
+.buttonRegistrar:hover {
     background: #6ec56e;
 }
 
-.buttonCriarConta {
+.buttonVoltar {
     color: #fff;
     font-size: 16px;
     height: 56px;
@@ -76,7 +71,7 @@
     transition-duration: 0.4s;
 }
 
-.buttonCriarConta:hover {
+.buttonVoltar:hover {
     background: #5970cc;
 }
 

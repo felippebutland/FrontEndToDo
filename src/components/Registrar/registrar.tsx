@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getToken, login, logout } from "../../auth";
-import { Container, Form } from "./styles";
+import { Container, Form } from "../Login/styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +11,7 @@ type User = {
     password: string
 }
 
-const Login = () => {
+const Registrar = () => {
 
     const [user, setUser] = useState<User>({
         username: '',
@@ -21,12 +21,12 @@ const Login = () => {
 
     const notificacaoConfig = {
         position: toast.POSITION.BOTTOM_RIGHT,
-        type: toast.TYPE.WARNING,
+        type: toast.TYPE.SUCCESS,
         autoClose: 2500
     }
     const notificacao = (msg: string) => toast(msg, notificacaoConfig);
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleRegistrar = async (e: React.FormEvent) => {
         e.preventDefault();
         const { username, password } = user;
         if(!username){
@@ -35,8 +35,8 @@ const Login = () => {
             notificacao("Senha não informada!");
         } else {
             try {
-                login("fsaff");
-                router.push("/home");
+                notificacao("Usuário cadastrado com sucesso!");
+                router.push("/login");
             } catch (err){
                 console.log(err);
                 notificacao("Não foi possível efetuar o login, tente novamente mais tarde!");                
@@ -47,11 +47,11 @@ const Login = () => {
     toast.configure();
     return (
         <Container className="container">
-            <Form className="form" onSubmit={handleLogin}>
+            <Form className="form" onSubmit={handleRegistrar}>
                 <br>
                 </br>
                 <p className="p">
-                    Bem vindo(a) ao sistema sem nome!
+                    Criar usuário
                 </p>
                 <p className="p">
                     <input className="input" type="text" placeholder="Usuário" onChange={
@@ -65,11 +65,11 @@ const Login = () => {
                 </p>
                 {notificacao}
                 <br/>
-                    <button className="buttonEntrar" type="submit">Entrar</button>
+                    <button className="buttonRegistrar" type="submit">Registrar</button>
                 <br/>
-                <Link href="/registrar">
-                    <button className="buttonCriarConta" type="button">
-                        Criar conta    
+                <Link href="/login">
+                    <button className="buttonVoltar" type="button">
+                        Voltar para o Login   
                     </button>               
                 </Link>
                 <br/>
@@ -78,4 +78,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Registrar;
