@@ -25,11 +25,13 @@
     left: -100%;
     transition: 850ms;
     box-shadow: 3px 5px 20px;
+    z-index: 1000;
 }
 
 .nav-menu.active {
     left: 0;
     transition: 350ms;
+    z-index: 1000;
 }
 
 .nav-text {

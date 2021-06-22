@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getToken, login, logout } from "../../auth";
 import { Container, Form } from "../Login/styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type User = {
@@ -19,27 +18,35 @@ const Registrar = () => {
     });
     const router = useRouter();
 
-    const notificacaoConfig = {
+    const notificacaoConfigSuccess = {
         position: toast.POSITION.BOTTOM_RIGHT,
         type: toast.TYPE.SUCCESS,
         autoClose: 2500
     }
-    const notificacao = (msg: string) => toast(msg, notificacaoConfig);
+
+    const notificacaoConfigWarning = {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        type: toast.TYPE.WARNING,
+        autoClose: 2500
+    }
+
+    const notificacaoSuccess = (msg: string) => toast(msg, notificacaoConfigSuccess);
+    const notificacaoWarning = (msg: string) => toast(msg, notificacaoConfigWarning);
 
     const handleRegistrar = async (e: React.FormEvent) => {
         e.preventDefault();
         const { username, password } = user;
         if(!username){
-            notificacao("Usuário não informado!");
+            notificacaoWarning("Usuário não informado!");
         } else if (!password){
-            notificacao("Senha não informada!");
+            notificacaoWarning("Senha não informada!");
         } else {
             try {
-                notificacao("Usuário cadastrado com sucesso!");
+                notificacaoSuccess("Usuário cadastrado com sucesso!");
                 router.push("/login");
             } catch (err){
                 console.log(err);
-                notificacao("Não foi possível efetuar o login, tente novamente mais tarde!");                
+                notificacaoWarning("Não foi possível efetuar o login, tente novamente mais tarde!");                
             }
         }        
     };
@@ -63,7 +70,8 @@ const Registrar = () => {
                         e => setUser({...user, password: e.target.value})}
                     />
                 </p>
-                {notificacao}
+                {notificacaoSuccess}
+                {notificacaoWarning}
                 <br/>
                     <button className="buttonRegistrar" type="submit">Registrar</button>
                 <br/>

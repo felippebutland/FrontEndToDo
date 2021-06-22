@@ -10,44 +10,8 @@ export const SideBarData = [
         className: 'nav-text'
     },
     {
-        title: 'Comentários',
-        path: './Comentario/comentario',
-        icon: <FaIcons.FaCommentAlt />,
-        className: 'nav-text'
-    },
-    {
-        title: 'Grupos',
-        path: '/home/grupos',
-        icon: <FaIcons.FaUsers />,
-        className: 'nav-text'
-    },
-    {
-        title: 'Prioridades',
-        path: '/home/prioridades',
-        icon: <FaIcons.FaExclamationTriangle />,
-        className: 'nav-text'
-    },
-    {
-        title: 'Projetos',
-        path: '/home/projetos',
-        icon: <FaIcons.FaPenSquare />,
-        className: 'nav-text'
-    },
-    {
-        title: 'Sistemas',
-        path: '/home/sistemas',
-        icon: <BsIcons.BsGearFill />,
-        className: 'nav-text'
-    },
-    {
-        title: 'Tarefas',
-        path: '/home/tarefas',
-        icon: <FaIcons.FaCheckCircle />,
-        className: 'nav-text'
-    },
-    {
         title: 'Usuarios',
-        path: '/home/usuarios',
+        path: '/usuarios',
         icon: <FaIcons.FaUserAlt />,
         className: 'nav-text'
     }

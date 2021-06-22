@@ -4,6 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SideBarData } from "./SidebarData";
 import {IconContext } from 'react-icons';
+import { useRouter } from "next/router";
 
 const Navbar = () => {
     const [sideBar, setSideBar] = useState(false);
@@ -27,7 +28,7 @@ const Navbar = () => {
                     {SideBarData.map((item, index) => {
                         return (
                             <li key={index} className={item.className}>
-                                <Link to={item.path}>
+                                <Link to={item.path} href={item.path} >
                                     {item.icon}
                                     <span>
                                         {item.title}
