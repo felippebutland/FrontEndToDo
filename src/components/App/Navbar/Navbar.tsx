@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SideBarData } from "./SidebarData";
 import {IconContext } from 'react-icons';
-import { useRouter } from "next/router";
+
 
 const Navbar = () => {
     const [sideBar, setSideBar] = useState(false);
@@ -16,6 +16,9 @@ const Navbar = () => {
             <div className="navbar">
                 <Link to = "#" className='menu-bars'>
                     <FaIcons.FaBars onClick={showSideBar}/>
+                </Link>
+                <Link to = "#" className='logout'>
+                    <AiIcons.AiOutlineLogout href={`/login/x`}/>
                 </Link>
             </div>
             <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
