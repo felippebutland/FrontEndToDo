@@ -1,7 +1,6 @@
-export const TOKEN = "credentials";
+export const TOKEN = "@airbnb-Token";
 export const isAuthenticated = () => {
-    console.log(localStorage.getItem(TOKEN));
-    return localStorage.getItem(TOKEN);
+    return localStorage.getItem(TOKEN) !== null;
 }
 export const getToken = () => localStorage.getItem(TOKEN);
 export const login = (token: string) => {

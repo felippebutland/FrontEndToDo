@@ -1,9 +1,9 @@
 .container {
     background-image: url("./Imgs/background_img.jpg");
     background-position: center;
-    background-size: cover;
+    background-size: auto;
     background-color: rgb(237, 237, 237);
-    display: flex;
+    display: initial;
     align-items: center;
     justify-content: center;
     height: 84.7ch;

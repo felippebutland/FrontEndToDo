@@ -5,9 +5,14 @@ import '../src/components/Login/LoginStyles.css';
 import '../src/components/Registrar/RegistrarStyles.css';
 import '../src/components/App/HomeStyles.css';
 import '../src/components/App/gridSistemasStyles.css';
+import { AuthProvider } from "../src/context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />  
+    </AuthProvider>    
+  );
 }
 
 export default MyApp

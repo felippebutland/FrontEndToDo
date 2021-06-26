@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getToken, login, logout } from "../../auth";
+import React, { useContext, useEffect, useState } from "react";
+import { getToken, login, logout } from "../../services/auth";
 import { Container, Form } from "./styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from "../../context/AuthContext";
 
 type User = {
     username: string,
@@ -12,6 +14,13 @@ type User = {
 }
 
 const Login = () => {
+
+    const { register, handleSubmit } = useForm();
+    const { SignIn } = useContext(AuthContext);
+
+    async function handleSignIn(data){
+        await SignIn(data);
+    }
 
     const [user, setUser] = useState<User>({
         username: '',
@@ -43,24 +52,38 @@ const Login = () => {
             }
         }        
     };
-
+    //<Form className="form" onSubmit={handleLogin}>
     toast.configure();
     return (
         <Container className="container">
-            <Form className="form" onSubmit={handleLogin}>
+            <Form className="form" onSubmit={handleSubmit(handleSignIn)}>
                 <br>
                 </br>
                 <p className="p">
                     Bem vindo(a) ao sistema sem nome!
                 </p>
                 <p className="p">
-                    <input className="input" type="text" placeholder="Usuário" onChange={
-                        e => setUser({...user, username: e.target.value})
-                    }/>
+                    <input 
+                        {...register('usuario')}
+                        className="input"
+                        name="usuario"
+                        type="text" 
+                        placeholder="Usuário" 
+                        onChange={
+                            e => setUser({...user, username: e.target.value})
+                        }
+                    />
                 </p>
                 <p className="p">
-                    <input className="input" type="password" placeholder="Senha" onChange={
-                        e => setUser({...user, password: e.target.value})}
+                    <input 
+                        {...register('senha')}
+                        className="input" 
+                        name="senha"
+                        type="password" 
+                        placeholder="Senha" 
+                        onChange={
+                            e => setUser({...user, password: e.target.value})
+                        }
                     />
                 </p>
                 {notificacao}
