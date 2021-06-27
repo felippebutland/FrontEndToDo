@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Navbar from "./Navbar/Navbar"
 import Footer from "./Footer/Footer"
 import { StaticRouter as Router, Switch, Route} from "react-router-dom"
@@ -25,7 +25,7 @@ const Home = () => {
                 <Grid />
                 </div>
             </div>
-            <Footer />           
+            <Footer />
             
             <Switch>
                 <Route path='/home' exact component={AppPage}/>

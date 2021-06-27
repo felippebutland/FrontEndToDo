@@ -3,6 +3,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import api from "../services/api";
 import { setCookie ,parseCookies } from "nookies";
 import Router from "next/router";
+import { getUserInformation, getUserSignIn } from "../services/UsuarioService";
 
 type User = {
     id_usuario: Int16Array,
@@ -29,24 +30,18 @@ export function AuthProvider({children}) {
 
     useEffect(() => {
         const cookies = parseCookies();
-        const token = cookies['nextauth.token'];
+        const token = cookies['next-token'];
+        const nome = cookies['user'];
 
         if(token){
-
+            getUserInformation(nome).then(response => {
+                setUser(response.data[0].nome)
+            })
         }
-
     }, [])
 
-    async function getUser(username: string) {
-        const response = await api.get(`/usuario/${username}`);
-        return {
-            token: response.data.token,
-            user: response.data.data
-        }
-    }
-
     async function signIn({usuario}: SignInData) {
-        const {token, user} = await getUser(usuario);
+        const {token, user} = await getUserSignIn(usuario);
 
         if(!user || !token){
             return false;

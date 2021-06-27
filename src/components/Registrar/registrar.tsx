@@ -16,10 +16,6 @@ const Registrar = () => {
 
     const { register, handleSubmit } = useForm();
 
-    const [user, setUser] = useState<User>({
-        username: '',
-        password: ''
-    });
     const router = useRouter();
 
     const notificacaoConfigSuccess = {
@@ -45,22 +41,20 @@ const Registrar = () => {
         console.log(data);
         if(!data.usuario){
             notificacaoWarning("Usuário não informado!");
+            return;
+        } 
+        var usuarioExiste = await verificarUsuarioExistente(data);
+        if(usuarioExiste){
+            notificacaoWarning("Usuário já existe!");
+            return;
+        } 
+        var retorno = await registerUser(data);
+        if(!retorno){
+            notificacaoWarning("Ocorreu um erro durante a requisição, tente novamente mais tarde.");
         } else {
-            var usuarioExiste = await verificarUsuarioExistente(data);
-            if(usuarioExiste){
-                notificacaoWarning("Usuário já existe!");
-            } else {
-                var retorno = await registerUser(data);
-
-                if(!retorno){
-                    notificacaoWarning("Ocorreu um erro durante a requisição, tente novamente mais tarde.");
-                } else {
-                    notificacaoSuccess("Usuário registrado com sucesso!")
-                    router.push("/login");
-                }
-            }
-            
-        }      
+            notificacaoSuccess("Usuário registrado com sucesso!")
+            router.push("/login");
+        }    
     }
 
     toast.configure();

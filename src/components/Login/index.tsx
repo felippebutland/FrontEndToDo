@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,8 +28,6 @@ const Login = () => {
             }
         }            
     }
-
-    const router = useRouter();
 
     const notificacaoError = {
         position: toast.POSITION.BOTTOM_RIGHT,
