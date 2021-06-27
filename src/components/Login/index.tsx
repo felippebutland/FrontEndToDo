@@ -1,62 +1,54 @@
-import React, { useContext, useEffect, useState } from "react";
-import { getToken, login, logout } from "../../services/auth";
-import { Container, Form } from "./styles";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from "../../context/AuthContext";
 
-type User = {
-    username: string,
-    password: string
-}
-
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
-    const { SignIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
-    async function handleSignIn(data){
-        await SignIn(data);
+    type SignInData = {
+        usuario: string
     }
 
-    const [user, setUser] = useState<User>({
-        username: '',
-        password: ''
-    });
+    async function handleSignIn(data: SignInData){
+        console.log(data);
+        if(!data.usuario){
+            notificacaoErro("Usuário não informado!");
+        } else {
+            var retorno = await signIn(data);
+
+            if(!retorno){
+                notificacaoErro("Usuário não encontrado!");
+            } else {
+                notificacaoSucesso("Login realizado com sucesso!")
+            }
+        }            
+    }
+
     const router = useRouter();
 
-    const notificacaoConfig = {
+    const notificacaoError = {
         position: toast.POSITION.BOTTOM_RIGHT,
         type: toast.TYPE.WARNING,
         autoClose: 2500
     }
-    const notificacao = (msg: string) => toast(msg, notificacaoConfig);
+    const notificacaoSuccess = {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        type: toast.TYPE.SUCCESS,
+        autoClose: 2500
+    }
+    const notificacaoErro = (msg: string) => toast(msg, notificacaoError);
+    const notificacaoSucesso = (msg: string) => toast(msg, notificacaoSuccess);
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const { username, password } = user;
-        if(!username){
-            notificacao("Usuário não informado!");
-        } else if (!password){
-            notificacao("Senha não informada!");
-        } else {
-            try {
-                login("fsaff");
-                router.push("/home");
-            } catch (err){
-                console.log(err);
-                notificacao("Não foi possível efetuar o login, tente novamente mais tarde!");                
-            }
-        }        
-    };
-    //<Form className="form" onSubmit={handleLogin}>
     toast.configure();
     return (
-        <Container className="container">
-            <Form className="form" onSubmit={handleSubmit(handleSignIn)}>
+        <div className="background">
+            <form className="form" onSubmit={handleSubmit(handleSignIn)}>
                 <br>
                 </br>
                 <p className="p">
@@ -68,25 +60,9 @@ const Login = () => {
                         className="input"
                         name="usuario"
                         type="text" 
-                        placeholder="Usuário" 
-                        onChange={
-                            e => setUser({...user, username: e.target.value})
-                        }
+                        placeholder="Usuário"
                     />
                 </p>
-                <p className="p">
-                    <input 
-                        {...register('senha')}
-                        className="input" 
-                        name="senha"
-                        type="password" 
-                        placeholder="Senha" 
-                        onChange={
-                            e => setUser({...user, password: e.target.value})
-                        }
-                    />
-                </p>
-                {notificacao}
                 <br/>
                     <button className="buttonEntrar" type="submit">Entrar</button>
                 <br/>
@@ -96,8 +72,8 @@ const Login = () => {
                     </button>               
                 </Link>
                 <br/>
-            </Form>
-        </Container>
+            </form>
+        </div>
     );
 }
 

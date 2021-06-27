@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Form } from "../Login/styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useForm } from 'react-hook-form';
+import { registerUser, verificarUsuarioExistente } from "../../services/UsuarioService";
+import * as FaIcons from "react-icons/fa";
 
 type User = {
     username: string,
@@ -11,6 +13,8 @@ type User = {
 }
 
 const Registrar = () => {
+
+    const { register, handleSubmit } = useForm();
 
     const [user, setUser] = useState<User>({
         username: '',
@@ -33,56 +37,61 @@ const Registrar = () => {
     const notificacaoSuccess = (msg: string) => toast(msg, notificacaoConfigSuccess);
     const notificacaoWarning = (msg: string) => toast(msg, notificacaoConfigWarning);
 
-    const handleRegistrar = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const { username, password } = user;
-        if(!username){
+    type RegisterData = {
+        usuario: string
+    }
+
+    async function registrarUsuario(data: RegisterData){
+        console.log(data);
+        if(!data.usuario){
             notificacaoWarning("Usuário não informado!");
-        } else if (!password){
-            notificacaoWarning("Senha não informada!");
         } else {
-            try {
-                notificacaoSuccess("Usuário cadastrado com sucesso!");
-                router.push("/login");
-            } catch (err){
-                console.log(err);
-                notificacaoWarning("Não foi possível efetuar o login, tente novamente mais tarde!");                
+            var usuarioExiste = await verificarUsuarioExistente(data);
+            if(usuarioExiste){
+                notificacaoWarning("Usuário já existe!");
+            } else {
+                var retorno = await registerUser(data);
+
+                if(!retorno){
+                    notificacaoWarning("Ocorreu um erro durante a requisição, tente novamente mais tarde.");
+                } else {
+                    notificacaoSuccess("Usuário registrado com sucesso!")
+                    router.push("/login");
+                }
             }
-        }        
-    };
+            
+        }      
+    }
 
     toast.configure();
     return (
-        <Container className="container">
-            <Form className="form" onSubmit={handleRegistrar}>
+        <div className="background">
+            <form className="form" onSubmit={handleSubmit(registrarUsuario)}>
                 <br>
                 </br>
                 <p className="p">
                     Criar usuário
                 </p>
                 <p className="p">
-                    <input className="input" type="text" placeholder="Usuário" onChange={
-                        e => setUser({...user, username: e.target.value})
-                    }/>
-                </p>
-                <p className="p">
-                    <input className="input" type="password" placeholder="Senha" onChange={
-                        e => setUser({...user, password: e.target.value})}
+                    <input
+                        {...register('usuario')} 
+                        className="input" 
+                        type="text" 
+                        placeholder="Usuário"
                     />
                 </p>
-                {notificacaoSuccess}
-                {notificacaoWarning}
                 <br/>
                     <button className="buttonRegistrar" type="submit">Registrar</button>
                 <br/>
                 <Link href="/login">
                     <button className="buttonVoltar" type="button">
-                        Voltar para o Login   
+                        <FaIcons.FaArrowLeft />
+                        &nbsp; Voltar para o Login   
                     </button>               
                 </Link>
                 <br/>
-            </Form>
-        </Container>
+            </form>
+        </div>
     );
 }
 

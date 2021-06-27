@@ -1,18 +1,25 @@
-.container {
+.background {
+    position:absolute;
+    overflow:hidden;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
     background-image: url("../Login/Imgs/background_img.jpg");
-    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
-    background-color: rgb(237, 237, 237);
     display: flex;
-    align-items: center;
+    width: 100%;
     justify-content: center;
-    height: 84.7ch;
+    align-items: center;
 }
 
 .form {
     width: 400px;
     background-color: #49216a;
-    height: 60%;
+    max-height: 400px;
+    min-height: 300px;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 20px -1px;

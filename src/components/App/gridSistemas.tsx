@@ -25,6 +25,11 @@ import axios from "axios";
 const Grid = () => {
     var idTeste = 1;
 
+    type Sistema = {
+        id_sistema: string;
+        nome: string;
+    }
+
     const [sistemas, setSistemas] = useState([]); 
     useEffect(() => {
         axios.get('http://localhost:3060/sistema').then(response => {
@@ -48,7 +53,7 @@ const Grid = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {sistemas.map((sistema) => (
+                {sistemas.map((sistema: Sistema) => (
                 <TableRow key={sistema.id_sistema} hover="true">
                     <TableCell component="th" scope="row">
                     {sistema.id_sistema}
