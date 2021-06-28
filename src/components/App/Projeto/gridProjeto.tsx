@@ -20,23 +20,19 @@ import {
 import * as FaIcons from "react-icons/fa";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import api from "../../services/api";
-import { gridProjeto } from "./Projeto/gridProjeto";
- 
+import api from "../../../services/api";
+
 const Grid = () => {
-    const [gridProjeto, setGridProjeto] = useState(false);
 
-    const showGridProjeto = () => setGridProjeto(!gridProjeto);
-
-    type Sistema = {
-        id_sistema: string;
+    type Projeto = {
+        id_projeto: string;
         nome: string;
     }
 
-    const [sistemas, setSistemas] = useState([]); 
+    const [projeto, setProjeto] = useState([]); 
     useEffect(() => {
-        api.get('/sistema').then(response => {
-            setSistemas(response.data.data);
+        api.get('/projeto').then(response => {
+            setProjeto(response.data.data);
         })
     }, []);
 
@@ -49,23 +45,23 @@ const Grid = () => {
                 <TableCell>
                     ID
                 </TableCell>
-                <TableCell>Sistema</TableCell>
+                <TableCell>Projeto</TableCell>
                 <TableCell width="120" align="center" >
                     Ações
                 </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                {sistemas.map((sistema: Sistema) => (
-                <TableRow key={sistema.id_sistema} hover="true">
+                {projeto.map((projeto: Projeto) => (
+                <TableRow key={projeto.id_projeto} hover="true">
                     <TableCell component="th" scope="row">
-                    {sistema.id_sistema}
+                    {projeto.id_projeto}
                     </TableCell>
                     <TableCell component="th" scope="row">
-                    {sistema.nome}
+                    {projeto.nome}
                     </TableCell>
                     <TableCell>
-                    <Link to={`/sistema/${sistema.id_sistema}`} onClick={() => {}}>
+                    <Link to={`/sistema/${projeto.id_projeto}`} onClick={() => {}}>
                         <IconButton aria-label="edit">
                         <FaIcons.FaPen/>
                         </IconButton>
@@ -80,4 +76,4 @@ const Grid = () => {
     );
 }
 
-export default Grid;
+export default gridProjeto;
