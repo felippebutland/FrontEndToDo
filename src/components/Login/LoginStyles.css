@@ -37,8 +37,9 @@
 
 .p {
     color: #cccccc;
-    margin-bottom: 5px;
-    padding: 10px;
+    margin-bottom: 2px;
+    padding: 50px;
+    height: 80px;
     width: 100%;
     text-align: center;
 }
