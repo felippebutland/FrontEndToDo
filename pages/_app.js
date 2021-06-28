@@ -4,7 +4,6 @@ import '../src/components/App/Footer/FooterStyles.css';
 import '../src/components/Login/LoginStyles.css';
 import '../src/components/Registrar/RegistrarStyles.css';
 import '../src/components/App/HomeStyles.css';
-import '../src/components/App/gridSistemasStyles.css';
 import Head from 'next/head'
 import { AuthProvider } from "../src/context/AuthContext";
 import { useEffect } from 'react'
