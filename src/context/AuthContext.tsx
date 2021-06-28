@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import api from "../services/api";
-import { setCookie ,parseCookies } from "nookies";
+import { setCookie ,parseCookies, destroyCookie } from "nookies";
 import Router from "next/router";
 import { getUserInformation, getUserSignIn } from "../services/UsuarioService";
 
@@ -18,6 +18,7 @@ type AuthContextType = {
     user: User | undefined;
     isAuthenticated: boolean;
     signIn: ({usuario}: SignInData) => Promise<boolean>;
+    Logout: ({usuario}: SignInData) => Promise<void>
 }
 
 
@@ -57,10 +58,19 @@ export function AuthProvider({children}) {
         }
     }
 
+    async function Logout(){
+        
+        console.log("Deslogando...")
+        destroyCookie(undefined, 'next-token');
+        destroyCookie(undefined, 'user');
+        Router.push('/');        
+    } 
+
     return (
-        <AuthContext.Provider value = {{ user, isAuthenticated, signIn}}>
+        <AuthContext.Provider value = {{ user, isAuthenticated, signIn, Logout}}>
             {children}
         </AuthContext.Provider>
     );
 }
+
 

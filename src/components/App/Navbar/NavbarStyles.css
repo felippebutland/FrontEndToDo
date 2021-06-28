@@ -15,8 +15,10 @@
 }
 
 .logout {
+    position: fixed;
     color: #f5f5f5;
-    margin-left: 85rem;
+    margin-left: 95%;
+    right: 50px;
     font-size: 2rem;
     background: none;
 }

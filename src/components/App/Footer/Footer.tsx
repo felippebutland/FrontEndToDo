@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { isTypedArray } from "util/types";
 import { AuthContext } from "../../../context/AuthContext";
 
 const Footer = () => {

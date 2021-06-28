@@ -1,15 +1,20 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link, Route, Switch } from "react-router-dom";
 import { SideBarData } from "./SidebarData";
 import {IconContext } from 'react-icons';
+import link from "next/link";
+import { AuthContext } from "../../../context/AuthContext";
 
 
 const Navbar = () => {
     const [sideBar, setSideBar] = useState(false);
 
     const showSideBar = () => setSideBar(!sideBar);
+
+    const { Logout } = useContext(AuthContext);
+    
     return(
         <>
         <IconContext.Provider value={{color: '#fff'}}>
@@ -18,7 +23,7 @@ const Navbar = () => {
                     <FaIcons.FaBars onClick={showSideBar}/>
                 </Link>
                 <Link to = "/" className='logout'>
-                    <AiIcons.AiOutlineLogout />
+                    <AiIcons.AiOutlineLogout onClick={Logout}/>
                 </Link>
             </div>
             <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
