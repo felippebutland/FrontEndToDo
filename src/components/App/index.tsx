@@ -3,6 +3,7 @@ import Footer from "./Footer/Footer"
 import { StaticRouter as Router, Switch, Route} from "react-router-dom"
 import AppPage from "../../../pages/home";
 import Grid from "./gridSistemas";
+import MTable from "./gridSistemas2-0";
 
 const Home = () => {
 
@@ -21,7 +22,7 @@ const Home = () => {
                     <button type="submit" className="buttonPesquisa">Pesquisar</button> 
                     </p>                    
                 </form>
-                <Grid />
+                <MTable />
                 </div>
             </div>
             <Footer />
