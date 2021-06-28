@@ -4,10 +4,8 @@ import { AuthContext } from "../../../context/AuthContext";
 
 const Footer = () => {
     const { user } = useContext(AuthContext);
-    var nome = user;
-    if(Array.isArray(nome)){
-        nome = nome[0].nome;
-    }
+    console.log(user)
+    var nome = user?.nome
 
     return (
         <div className="footer">

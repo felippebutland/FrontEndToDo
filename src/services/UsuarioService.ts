@@ -6,7 +6,6 @@ type RegisterData = {
 
 export async function verificarUsuarioExistente(data: RegisterData) {
     const response = await api.get(`/usuario/${data.usuario}`);
-    console.log(response.data.data);
     if(!response.data.data.length){
         return false;
     }

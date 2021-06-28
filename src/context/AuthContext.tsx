@@ -35,7 +35,7 @@ export function AuthProvider({children}) {
 
         if(token){
             getUserInformation(nome).then(response => {
-                setUser(response.data[0].nome)
+                setUser(response.data[0])
             })
         }
     }, [])
@@ -48,7 +48,7 @@ export function AuthProvider({children}) {
         } else {
             setCookie(undefined, 'next-token', token, {maxAge: 3600/**1 hora*/});
             setCookie(undefined, 'user', user.map(x => x.nome)[0], {maxAge: 3600/**1 hora*/});
-            setUser(user);
+            setUser(user[0]);
             Router.push('/home');
             return true;
         }
