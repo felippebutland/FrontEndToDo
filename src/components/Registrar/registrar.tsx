@@ -53,7 +53,7 @@ const Registrar = () => {
             notificacaoWarning("Ocorreu um erro durante a requisição, tente novamente mais tarde.");
         } else {
             notificacaoSuccess("Usuário registrado com sucesso!")
-            router.push("/login");
+            router.push("/");
         }    
     }
 
@@ -77,7 +77,7 @@ const Registrar = () => {
                 <br/>
                     <button className="buttonRegistrar" type="submit">Registrar</button>
                 <br/>
-                <Link href="/login">
+                <Link href="/">
                     <button className="buttonVoltar" type="button">
                         <FaIcons.FaArrowLeft />
                         &nbsp; Voltar para o Login   
