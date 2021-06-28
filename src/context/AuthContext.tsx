@@ -48,6 +48,9 @@ export function AuthProvider({children}) {
         } else {
             setCookie(undefined, 'next-token', token, {maxAge: 3600/**1 hora*/});
             setCookie(undefined, 'user', user.map(x => x.nome)[0], {maxAge: 3600/**1 hora*/});
+
+            api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
             setUser(user[0]);
             Router.push('/home');
             return true;

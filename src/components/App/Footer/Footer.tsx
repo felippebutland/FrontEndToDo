@@ -4,7 +4,6 @@ import { AuthContext } from "../../../context/AuthContext";
 
 const Footer = () => {
     const { user } = useContext(AuthContext);
-    console.log(user)
     var nome = user?.nome
 
     return (

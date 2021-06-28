@@ -20,10 +20,9 @@ import {
 import * as FaIcons from "react-icons/fa";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../../services/api";
 
 const Grid = () => {
-    var idTeste = 1;
 
     type Sistema = {
         id_sistema: string;
@@ -32,7 +31,7 @@ const Grid = () => {
 
     const [sistemas, setSistemas] = useState([]); 
     useEffect(() => {
-        axios.get('http://localhost:3060/sistema').then(response => {
+        api.get('/sistema').then(response => {
             setSistemas(response.data.data);
         })
     }, []);

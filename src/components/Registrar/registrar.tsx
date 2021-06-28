@@ -7,11 +7,6 @@ import { useForm } from 'react-hook-form';
 import { registerUser, verificarUsuarioExistente } from "../../services/UsuarioService";
 import * as FaIcons from "react-icons/fa";
 
-type User = {
-    username: string,
-    password: string
-}
-
 const Registrar = () => {
 
     const { register, handleSubmit } = useForm();
@@ -38,7 +33,6 @@ const Registrar = () => {
     }
 
     async function registrarUsuario(data: RegisterData){
-        console.log(data);
         if(!data.usuario){
             notificacaoWarning("Usuário não informado!");
             return;

@@ -15,7 +15,6 @@ const Login = () => {
     }
 
     async function handleSignIn(data: SignInData){
-        console.log(data);
         if(!data.usuario){
             notificacaoErro("Usuário não informado!");
         } else {
