@@ -1,6 +1,5 @@
 import axios from "axios";
 import { parseCookies } from "nookies";
-import { getToken } from "./auth";
 
 const cookies = parseCookies();
 const token = cookies['next-token'];
@@ -18,13 +17,5 @@ api.interceptors.request.use(config => {
 if(token){
   api.defaults.headers['Authorization'] = `Bearer ${token}`
 }
-
-//api.interceptors.request.use(async config => {
-//    const token = getToken();
-//    if (token) {
-//      config.headers.Authorization = `Bearer ${token}`;
-//    }
-//    return config;
-//});
 
 export default api;

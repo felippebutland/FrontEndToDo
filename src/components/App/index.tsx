@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react"
 import Navbar from "./Navbar/Navbar"
 import Footer from "./Footer/Footer"
 import { StaticRouter as Router, Switch, Route} from "react-router-dom"
 import AppPage from "../../../pages/home";
 import Grid from "./gridSistemas";
-import { GetServerSideProps } from "next";
-import { parseCookies } from "nookies";
 
 const Home = () => {
 
