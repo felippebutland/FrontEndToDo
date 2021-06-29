@@ -2,6 +2,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import React, { useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { 
     Table,
     TableBody,
@@ -26,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
     tableContainer: {
         borderRadius: 15,
-        marginBottom: 50,
-        margin: '10px 10px',
+        marginBottom: '20px',
+        margin: '20px 10px',
         maxWidth: 1323
     },
     tableHeaderId: {
@@ -37,17 +39,17 @@ const useStyles = makeStyles((theme) => ({
         color: '#f5f5f5'
     },
     tableHeaderSistema: {
-      marginLeft: -50,
-      
-      fontWeight: 'bold',
-      backgroundColor: '#2e1443',
-      color: '#f5f5f5'
+        marginLeft: -50,
+        
+        fontWeight: 'bold',
+        backgroundColor: '#2e1443',
+        color: '#f5f5f5'
     },
     tableHeaderAcoes: {
-      width: 10,
-      fontWeight: 'bold',
-      backgroundColor: '#2e1443',
-      color: '#f5f5f5'
+        width: 10,
+        fontWeight: 'bold',
+        backgroundColor: '#2e1443',
+        color: '#f5f5f5'
     },
     tableHeaderCell: {
         fontWeight: 'bold',
@@ -64,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function MTable() {
+  const router = useRouter();
 
   const [sistemas, setSistemas] = useState([]); 
     useEffect(() => {
@@ -84,6 +87,10 @@ function MTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const handleClickIcon = (idSistema) => {
+    router.push(`/home/${idSistema}`);
+  }
 
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
@@ -108,9 +115,11 @@ function MTable() {
                 </Typography>            
               </TableCell>
               <TableCell>
-                <IconButton aria-label="edit">
-                  <FaIcons.FaPen/>
-                </IconButton>            
+                <Link href={`/sistema/${sistema.id_sistema}`}>
+                  <IconButton aria-label="edit" >
+                    <FaIcons.FaPen/>
+                  </IconButton>            
+                </Link>                
               </TableCell>
 
             </TableRow>

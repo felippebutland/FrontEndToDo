@@ -15,15 +15,7 @@ const Home = () => {
         <Router>
             <Navbar /> 
             <div className="sistemas">
-                <div className="sistemas-aba">
-                <form action="/" method="get">
-                    <p className="p">
-                    <input className="input-pesquisa" placeholder="Pesquise por ID do sistema" type="text" id="id_sistema_input"/>
-                    <button type="submit" className="buttonPesquisa">Pesquisar</button> 
-                    </p>                    
-                </form>
                 <MTable />
-                </div>
             </div>
             <Footer />
             
