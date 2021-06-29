@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import * as FaIcons from "react-icons/fa";
-import * as BsIcons from "react-icons/bs";
+import * as AiIcons from "react-icons/ai";
+import Link from "next/link";
 
 export const SideBarData = [
     {
@@ -10,10 +11,22 @@ export const SideBarData = [
         className: 'nav-text'
     },
     {
-        title: 'Usuarios',
-        path: '/usuarios',
-        icon: <FaIcons.FaUserAlt />,
+        title: 'Prioridade',
+        Link: "./Prioridade/gridPrioridade",
+        icon: <FaIcons.FaExclamation />,
         className: 'nav-text'
-    }
+    },
+    {
+        title: 'Status Tarefa',
+        path: '/tarefa-status',
+        icon: <AiIcons.AiFillCheckCircle />,
+        className: 'nav-text'
+    },
+    {
+        title: 'Tipo Tarefa',
+        path: '/tarefa-tipo',
+        icon: <AiIcons.AiFillTag />,
+        className: 'nav-text'
+    },
 ]
 

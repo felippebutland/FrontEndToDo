@@ -25,6 +25,7 @@ const Navbar = () => {
                 <Link to = "/" className='logout'>
                     <AiIcons.AiOutlineLogout onClick={Logout}/>
                 </Link>
+                <link rel="icon" href="./app/prioridade" />
             </div>
             <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' onClick={showSideBar}>
