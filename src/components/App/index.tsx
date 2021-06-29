@@ -2,8 +2,7 @@ import Navbar from "./Navbar/Navbar"
 import Footer from "./Footer/Footer"
 import { StaticRouter as Router, Switch, Route} from "react-router-dom"
 import AppPage from "../../../pages/home";
-import Grid from "./gridSistemas";
-import MTable from "./gridSistemas2-0";
+import GridSistemas from "./gridSistemas2-0";
 
 const Home = () => {
 
@@ -15,7 +14,7 @@ const Home = () => {
         <Router>
             <Navbar /> 
             <div className="sistemas">
-                <MTable />
+                <GridSistemas />
             </div>
             <Footer />
             

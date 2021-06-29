@@ -1,0 +1,86 @@
+.buttonEntrar {
+    color: #fff;
+    font-size: 16px;
+    background: #4bb64b;
+    height: 56px;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    transition-duration: 0.4s;
+}
+
+.buttonEntrar:hover {
+    background: #6ec56e;
+}
+
+.buttonCriarConta {
+    color: #fff;
+    font-size: 16px;
+    height: 56px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    background: #4b60b6;
+    transition-duration: 0.4s;
+}
+
+.buttonCriarConta:hover {
+    background: #5970cc;
+}
+
+.buttonFechar {
+    color: #fff;
+    font-size: 16px;
+    background: #4b60b6;
+    height: 56px;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 25%;
+    transition-duration: 0.4s;
+}
+
+.buttonFechar:hover {
+    background: #5970cc;
+}
+
+.buttonSelecionar {
+    color: #fff;
+    font-size: 16px;
+    background: #4bb64b;
+    height: 56px;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 25%;
+    transition-duration: 0.4s;
+}
+
+.buttonSelecionar:hover {
+    background: #6ec56e;    
+}
+
+.buttonNovoProjeto {
+    color: #fff;
+    font-size: 16px;
+    background: #49216a;
+    height: 40px;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    align-self: left;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 15%;
+    transition-duration: 0.4s;
+}
+
+.buttonNovoProjeto:hover {
+    background: #2e1443;       
+}
