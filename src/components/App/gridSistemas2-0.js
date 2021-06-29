@@ -90,6 +90,13 @@ function GridSistemas() {
         })
   }, []);
 
+  const [tarefa, setTarefa] = useState([]);
+    useEffect(() => {
+        api.get('/sistema').then(response => {
+            setTarefa(response.data.data);
+        })
+    }, []);
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -105,6 +112,7 @@ function GridSistemas() {
 
   const [open, setOpen] = React.useState(false);
   const [idSistema, setIdSistema] = useState(0);
+  const [idTarefa, setTarefaByProjeto] = useState(0);
   const { register, handleSubmit } = useForm();
   
   const handleClickOpen = (id_sistema) => {
@@ -113,6 +121,13 @@ function GridSistemas() {
       setIdSistema(id_sistema);
     }      
   };
+
+  const handleClickOpenCartoes = () => {
+      setOpen(true);
+      if (!Array.isArray(tarefa)){
+          setTarefaByProjeto(tarefa);
+      }
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -186,7 +201,7 @@ function GridSistemas() {
             <CgIcons.CgClose/>
             &nbsp;Fechar   
           </button>
-          <button className="buttonSelecionar" type="button" onClick={handleClose}>
+          <button className="buttonSelecionar" type="button" onClick={handleClickOpenCartoes}>
             <FaIcons.FaCheck/>
             &nbsp;Selecionar   
           </button>

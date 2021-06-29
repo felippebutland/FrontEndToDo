@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import api from '../../../services/api';
 import { DataGrid } from '@material-ui/data-grid';
 
-export function getIdPrioridade(){
+export function getIdTarefaTipo(){
 
 }
 
-export function GridPrioridade(prioridade) {
-    const id_prioridade = prioridade.id_prioridade;
+export function GridTarefaTipo(tarefaTipo) {
+    const tarefa_tipo = tarefaTipo.tarefa_tipo;
 
-    const [prioridade, setPrioridade] = useState([]);
+    const [tarefaTipo, setTarefaTipo] = useState([]);
     useEffect(() => {
-        api.get(`/prioridade`).then(response => {
-            setPrioridade(response.data.data);
+        api.get(`/tarefa_tipo`).then(response => {
+            setTarefaTipo(response.data.data);
         })
     }, []);
 
@@ -26,11 +26,11 @@ export function GridPrioridade(prioridade) {
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {console.log(prioridade)}
-            <DataGrid rows={prioridade} columns={colunas} pageSize={5}/>
+            {console.log(tarefaTipo)}
+            <DataGrid rows={tarefaTipo} columns={colunas} pageSize={5}/>
         </div>
 
     );
 }
 
-export default GridPrioridade;
+export default GridTarefaTipo;
