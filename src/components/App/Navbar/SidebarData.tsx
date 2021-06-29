@@ -12,7 +12,7 @@ export const SideBarData = [
     },
     {
         title: 'Prioridade',
-        Link: "./Prioridade/gridPrioridade",
+        path: '/prioridade',
         icon: <FaIcons.FaExclamation />,
         className: 'nav-text'
     },
