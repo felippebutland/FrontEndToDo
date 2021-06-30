@@ -26,7 +26,6 @@ export function GridTarefaTipo(tarefaTipo) {
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {console.log(tarefaTipo)}
             <DataGrid rows={tarefaTipo} columns={colunas} pageSize={5}/>
         </div>
 

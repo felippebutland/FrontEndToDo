@@ -26,7 +26,6 @@ export function GridPrioridade(prioridade) {
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {console.log(prioridade)}
             <DataGrid rows={prioridade} columns={colunas} pageSize={5}/>
         </div>
 

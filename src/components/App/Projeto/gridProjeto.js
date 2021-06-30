@@ -27,7 +27,6 @@ export function GridProjetos(sistema) {
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {console.log(projetos)}
             <DataGrid rows={projetos} columns={colunas} pageSize={5}/>
         </div>
     );

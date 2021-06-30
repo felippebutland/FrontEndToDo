@@ -1,12 +1,11 @@
-import axios from "axios";
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import api from "../services/api";
 import { setCookie ,parseCookies, destroyCookie } from "nookies";
 import Router from "next/router";
 import { getUserInformation, getUserSignIn } from "../services/UsuarioService";
 
 type User = {
-    id_usuario: Int16Array,
+    id_usuario: Int16Array;
     nome: string;
 }
 
